@@ -7,7 +7,9 @@ Interactive data visualization - project
 
 ## Data Sources:
 <a href=https://github.com/CSSEGISandData/COVID-19> JHU Covid-19 </a>
+
 <a href=https://en.wikipedia.org/wiki/Timeline_of_the_2019%E2%80%9320_coronavirus_pandemic_in_February_2020> Wikipedia - Timeline in February</a>
+
 <a href=https://en.wikipedia.org/wiki/Timeline_of_the_2019%E2%80%9320_coronavirus_pandemic_in_March_2020> Wikipedia - Timeline in March </a>
 
 ## Prerequisities
