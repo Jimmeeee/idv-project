@@ -2,11 +2,11 @@
 \usepackage{cite}
 \usepackage{lmodern}
 \usepackage[utf8]{inputenc}
-\usepackage[finnish]{babel}
 \usepackage{hyperref}
 \usepackage{graphicx}
 \usepackage[figurename=Fig.]{caption}
 \usepackage{subfig}
+\hyphenpenalty = 10000
 
 
 \title{Interactive Data Visualization - Project Report}
@@ -19,12 +19,12 @@
 
 \vspace{0.5cm}
 \section{Abstract}
-This project is part of interactive data visualization course. The purpose of this project was to create an interactive visualization from real-world data. I chose Covid-19 pandemic dataset as my datasource because it is currently a topical event and I immediately had a vision what my visualization could look like. Also, I wanted to.. TBD-solve some problem?
+This project is part of interactive data visualization course. The purpose of this project was to create an interactive visualization from real-world data. I chose Covid-19 pandemic dataset as my datasource because it is currently a topical event and I immediately had a vision what my visualization could look like. Also, I wanted to make a visualization that could provide useful information about a serious event at a glance.
 
-In this report I will cover the used data sources, explain the technical aspects of the visual representation, tell about the design processes and ending with lessons learned. The project can be found in GitHub \\ \url{https://github.com/Jimmeeee/idv-project}.
+In this report I will cover the used data sources, explain the technical aspects of the visual representation and tell about the design processes. The project can be found in GitHub\cite{git} and the visualization can be found from Tableau\cite{vis}.
 
 \section{Task abstraction}
-Instead of jumping into the visualization tool with the existing dataset and trying stuff out until I get something to work, I broke the project process into smaller tasks. The following list is meant to give an overview of the process I went through while doing the project.
+Instead of straight jumping into the visualization tool with the existing dataset and trying things out until I get something to work, I broke the project process into smaller low-level tasks. The following list is meant to give an overview of the process I went through while doing the project.
 \begin{enumerate}
 \item
 Cleaning the data and getting the data into easy-to-use form.
@@ -36,16 +36,16 @@ Doing the basic visualization and step by step pushing myself to try things diff
 
 \newpage
 \section{Data}
-I used dataset provided by John Hopkins University from \url{https://github.com/CSSEGISandData/COVID-19}. The data was collected from multiple different sources such as World Health Organization(WHO) and cleaned into daily reports that were in csv-format.
-In addition to JHU-Covid19 dataset I used timeline events of coronavirus outbreak from February and March (\url{https://en.wikipedia.org/wiki/Timeline_of_the_2019%E2%80%9320_coronavirus_pandemic_in_February_2020} and \url{https://en.wikipedia.org/wiki/Timeline_of_the_2019%E2%80%9320_coronavirus_pandemic_in_March_2020}).
+I used dataset provided by John Hopkins University\cite{jhu}. The data was collected from multiple different sources such as World Health Organization(WHO), and cleaned into daily reports that were in csv-format.
+In addition to JHU-Covid19 dataset I used timeline events of coronavirus outbreak from February\cite{feb} and March\cite{mar}.
 
-I used Python with pandas for data processing as I needed to get the data into a certain form for further processing and visualization. For JHU dataset I read the daily reports with pandas and made the reports to have uniform column names and country names. Finally, when the daily reports were cleaned I created a single csv file containing the information about confirmed, recovered and death cases in reported countries, which I used in the Tableau public to maek the visualization.
+I used Python with pandas for data processing as I needed to get the data into a certain form for further processing and visualization. For JHU dataset I read the daily reports with pandas and made the reports to have uniform column names and country names. Finally, when the daily reports were cleaned I created a single csv file containing the information about confirmed, recovered and death cases in reported countries, which I used in the Tableau public to make the visualization.
 
-For the other dataset (timeline events from wikipedia), I used web scraping to extract useful information from the site. For web scaraping I used Python's BeautifulSoup library and Pandas. I matched countries with events if the event contained the country. This allowed me to have events that were more or less connected to the country showed when the country was selected for further examination in the visualization.
+For the timeline events from wikipedia I used web scraping to extract useful information from the site. For web scaraping I used Python's BeautifulSoup library and Pandas. I matched countries with events if the event contained the country. This allowed me to have events that were more or less connected to the country showed when the country was selected for further examination in the visualization.
 
 
 \section{Design rationale and Visual representation}
-I wanted to make an interactive visualization that would provide fast and effortless information about the Covid-19 pandemic in the world. My visualization contains four elements that are:
+I wanted to make an interactive visualization that would provide fast and effortless information about the Covid-19 pandemic all around the world. My visualization contains four main elements that are:
 \begin{enumerate}
 \item
 Summary of the current situation
@@ -62,17 +62,37 @@ The first element shows the total confirmed, death and recovered cases in the wo
 The second element contains three interactive maps on top of each others, one for each of the following cases; confirmed, death and recovered. Each map shows the total amount of corresponding cases in the country with a colored circle. The size of the circle is directly proportional to the sum of the cases in the country. Also, each country has hover-over tooltip which tells the total cases.
 
 The third element consists of three line-plots, one for each of the following cases; confirmed, death and recovered. Each line-plot shows the total number of the corresponding cases as a function of date. One can choose a certain day or month from the plot and it will change the summary to show all of the cases on that day/month. 
-Also, the events textbox would only show the events from that single day/month.
+The events textbox also changes to only show the events from the selected day/month.
 
 The fourth element shows the events of the selected country/countries. Also, one can limit the events by selecting certain country from the map or dates from the line plot.
 
-Overall, all the elements are stacked on top of each other so that it is intuitive which plot will change and what changes with it.
+Overall, all the elements are stacked on top of each other so that it is intuitive which element will change and what changes with it.
 
 
 \section{Lessons learned}
 
+From this project I learned a few new things which are the following:
+\begin{enumerate}
+\item
+Task is often much easier to accomplish when it's divided into low-level tasks.
+\item
+I learned to use Tableau data visualization software.
+\item
+I learned to do simple web scraping with python.
+\end{enumerate}
+In addition, I managed to deepend my knowledge on data processing and data parsing with Python and Pandas.
 
-\section{References}
 
+\begin{thebibliography}{9}
+\bibitem{git} \url{https://github.com/Jimmeeee/idv-project}
+
+\bibitem{jhu} \url{https://github.com/CSSEGISandData/COVID-19}
+
+\bibitem{feb} \url{https://en.wikipedia.org/wiki/Timeline_of_the_2019%E2%80%9320_coronavirus_pandemic_in_February_2020}
+
+\bibitem{mar} \url{https://en.wikipedia.org/wiki/Timeline_of_the_2019%E2%80%9320_coronavirus_pandemic_in_March_2020}
+
+\bibitem{vis} \url{https://public.tableau.com/profile/jimi.hytonen#!/vizhome/Covid-19_15853411684190/Covid-19}
+\end{thebibliography}
 
 \end{document}
